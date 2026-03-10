@@ -8,7 +8,7 @@
 This is the official repository of CRMhs, a semantic ontology designed to capture and represent the full range of scientific activities involved in Heritage Science. It extends the CIDOC CRM ecosystem to bridge the gap between rigorous analytical data (physics, chemistry, biology) and cultural heritage contexts. It describes study objects, samples, preparations, analyses, devices, datasets, and specific properties.
 
 ## 🎯 Objectives
-**Standardization**: Providing a conceptual framework for institutions to organize, document, and preserve scientific investigation results.
-**Interoperability**: Offering a semantic tool to share and integrate data across laboratories and institutions, aligning with the wider cultural heritage domain.
-**FAIR Principles**: Ensuring that digital scientific data is Findable, Accessible, Interoperable, and Reusable.
-**Traceability**: Documenting the entire research workflow, including preparation, analysis, interpretation, and digital documentation.
+- **Standardization**: Providing a conceptual framework for institutions to organize, document, and preserve scientific investigation results.
+- **Interoperability**: Offering a semantic tool to share and integrate data across laboratories and institutions, aligning with the wider cultural heritage domain.
+- **FAIR Principles**: Ensuring that digital scientific data is Findable, Accessible, Interoperable, and Reusable.
+- **Traceability**: Documenting the entire research workflow, including preparation, analysis, interpretation, and digital documentation.
