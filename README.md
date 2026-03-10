@@ -3,7 +3,7 @@
 ## CRMhs Ontology
 ### CRMhs - A semantic model for Heritage Science
 *By Achille Felicetti & Franco Niccolucci*<br/>
-*Version 1.2 - 10.03.2026*
+*Version 1.2 - 10.03.2026* 
 
 This is the official repository of CRMhs, a semantic ontology designed to capture and represent the full range of scientific activities involved in Heritage Science. It extends the CIDOC CRM ecosystem to bridge the gap between rigorous analytical data (physics, chemistry, biology) and cultural heritage contexts. It describes study objects, samples, preparations, analyses, devices, datasets, and specific properties.
 
