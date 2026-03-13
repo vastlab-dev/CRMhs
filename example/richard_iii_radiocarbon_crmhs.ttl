@@ -1,0 +1,466 @@
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm:      <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmhs:    <http://vast-lab.org/crmhs/> .
+@prefix crmsci:   <http://www.cidoc-crm.org/extensions/crmsci/> .
+@prefix crmdig:   <http://www.cidoc-crm.org/extensions/crmdig/> .
+@prefix crmarchaeo: <http://www.cidoc-crm.org/extensions/crmarchaeo/> .
+@prefix hsdata:   <http://vast-lab.org/hsdata/> .
+
+# ============================================================
+# CRMhs Turtle encoding of the Richard III radiocarbon dating
+# workflow (Section 5.1 of CRMhs Specification v1.2)
+#
+# Enriched with data from: Bayliss, Bronk Ramsey, van der Plicht
+# (2022), "The skeleton in the car park", in Radiocarbon Dating
+# and Chronological Modelling: Guidelines and Best Practice,
+# Historic England (HEAG312).
+# 
+# Achille Felicetti - VAST-LAB. 13.03.2026
+# 
+# ============================================================
+
+
+# --- Archaeological Excavation (CRMarchaeo) ---
+
+hsdata:GreyfriarsExcavation
+    a crmarchaeo:A9_Archaeological_Excavation ;
+    rdfs:label "Greyfriars archaeological excavation, Leicester, 2012"@en ;
+    crm:P4_has_time_span hsdata:Timespan_2012_excavation ;
+    crm:P7_took_place_at hsdata:Place_GreyfriarsLeicester ;
+    crm:P14_carried_out_by hsdata:Actor_UniversityOfLeicester .
+
+hsdata:Timespan_2012_excavation
+    a crm:E52_Time-Span ;
+    rdfs:label "2012"@en ;
+    crm:P82a_begin_of_the_begin "2012-01-01"^^xsd:date ;
+    crm:P82b_end_of_the_end "2012-12-31"^^xsd:date .
+
+hsdata:Place_GreyfriarsLeicester
+    a crm:E53_Place ;
+    rdfs:label "Grey Friars church site, Leicester, UK"@en .
+
+
+# --- Study Object: the skeleton (HS6 / E19) ---
+
+hsdata:RichardIII_Skeleton
+    a crm:E19_Physical_Object ;
+    a crmhs:HS6_Study_Object ;
+    rdfs:label "Skeletal remains (SK1) discovered at Grey Friars, Leicester, 2012"@en ;
+    crmarchaeo:O19_was_object_encountered_through hsdata:GreyfriarsExcavation ;
+    crmhs:HSP17_has_area_of_interest hsdata:RichardIII_SamplingArea .
+
+# --- Study Object Area (HS8) ---
+
+hsdata:RichardIII_SamplingArea
+    a crmhs:HS8_Study_Object_Area ;
+    a crm:E53_Place ;
+    rdfs:label "Rib cage (costolatura) of Richard III skeleton – area selected for radiocarbon sampling"@en .
+
+
+# --- Scientific Activity: bone sampling (HS1) ---
+
+hsdata:BoneSamplingActivity
+    a crmhs:HS1_Scientific_Activity ;
+    rdfs:label "Extraction of four rib bone fragments from Richard III skeleton"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_BoneSampling ;
+    crmhs:HSP2_was_performed_on hsdata:RichardIII_Skeleton ;
+    crm:P14_carried_out_by hsdata:Actor_UniversityOfLeicester .
+
+hsdata:Title_BoneSampling
+    a crm:E35_Title ;
+    rdfs:label "Extraction of four rib bone fragments for radiocarbon dating"@en .
+
+
+# --- Study Object Samples: four individual rib bone samples (HS9) ---
+
+# Sample 1 – ORAU (OxA-27182)
+hsdata:BoneSample_OxA27182
+    a crmhs:HS9_Study_Object_Sample ;
+    a crmsci:S13_Sample ;
+    rdfs:label "Greyfriars SK1 sample 1 – human bone, rib (OxA-27182)"@en ;
+    crm:P1_is_identified_by hsdata:Identifier_OxA27182 ;
+    crmhs:HSP19_was_taken_from hsdata:RichardIII_Skeleton ;
+    crmhs:HSP20_was_taken_from_area hsdata:RichardIII_SamplingArea .
+
+hsdata:Identifier_OxA27182
+    a crm:E42_Identifier ;
+    rdfs:label "OxA-27182"@en .
+
+# Sample 2 – ORAU (OxA-27183)
+hsdata:BoneSample_OxA27183
+    a crmhs:HS9_Study_Object_Sample ;
+    a crmsci:S13_Sample ;
+    rdfs:label "Greyfriars SK1 sample 2 – human bone, rib (OxA-27183)"@en ;
+    crm:P1_is_identified_by hsdata:Identifier_OxA27183 ;
+    crmhs:HSP19_was_taken_from hsdata:RichardIII_Skeleton ;
+    crmhs:HSP20_was_taken_from_area hsdata:RichardIII_SamplingArea .
+
+hsdata:Identifier_OxA27183
+    a crm:E42_Identifier ;
+    rdfs:label "OxA-27183"@en .
+
+# Sample 3 – SUERC (SUERC-42896)
+hsdata:BoneSample_SUERC42896
+    a crmhs:HS9_Study_Object_Sample ;
+    a crmsci:S13_Sample ;
+    rdfs:label "Greyfriars 2012 Burial 1 sample 1 – human bone, rib (SUERC-42896)"@en ;
+    crm:P1_is_identified_by hsdata:Identifier_SUERC42896 ;
+    crmhs:HSP19_was_taken_from hsdata:RichardIII_Skeleton ;
+    crmhs:HSP20_was_taken_from_area hsdata:RichardIII_SamplingArea .
+
+hsdata:Identifier_SUERC42896
+    a crm:E42_Identifier ;
+    rdfs:label "SUERC-42896"@en .
+
+# Sample 4 – SUERC (SUERC-42897)
+hsdata:BoneSample_SUERC42897
+    a crmhs:HS9_Study_Object_Sample ;
+    a crmsci:S13_Sample ;
+    rdfs:label "Greyfriars 2012 Burial 1 sample 2 – human bone, rib (SUERC-42897)"@en ;
+    crm:P1_is_identified_by hsdata:Identifier_SUERC42897 ;
+    crmhs:HSP19_was_taken_from hsdata:RichardIII_Skeleton ;
+    crmhs:HSP20_was_taken_from_area hsdata:RichardIII_SamplingArea .
+
+hsdata:Identifier_SUERC42897
+    a crm:E42_Identifier ;
+    rdfs:label "SUERC-42897"@en .
+
+
+# --- Sample Preparation at ORAU (HS10) ---
+
+hsdata:SamplePreparation_ORAU
+    a crmhs:HS10_Sample_Preparation ;
+    a crm:E11_Modification ;
+    rdfs:label "Chemical pretreatment, combustion and graphitisation of bone samples at ORAU"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_SamplePrep_ORAU ;
+    crmhs:HSP5_prepared hsdata:BoneSample_OxA27182 ;
+    crmhs:HSP5_prepared hsdata:BoneSample_OxA27183 ;
+    crmhs:HSP6_used_method hsdata:Method_ChemicalPretreatment_ORAU ;
+    crmhs:HSP7_used_protocol hsdata:Protocol_ORAU_Pretreatment ;
+    crm:P14_carried_out_by hsdata:Actor_ORAU ;
+    crm:P7_took_place_at hsdata:Place_ORAULaboratory .
+
+hsdata:Title_SamplePrep_ORAU
+    a crm:E35_Title ;
+    rdfs:label "ORAU chemical pretreatment, combustion and graphitisation of bone samples"@en .
+
+hsdata:Method_ChemicalPretreatment_ORAU
+    a crmhs:HS4_Method ;
+    rdfs:label "Chemical pretreatment for AMS radiocarbon dating of bone – ORAU method"@en .
+
+hsdata:Protocol_ORAU_Pretreatment
+    a crmhs:HS5_Protocol ;
+    rdfs:label "ORAU protocol: pretreatment and combustion (Brock et al. 2010b); graphitisation (Dee and Bronk Ramsey 2000); AMS dating (Bronk Ramsey et al. 2004a)"@en .
+
+
+# --- Sample Preparation at SUERC (HS10) ---
+
+hsdata:SamplePreparation_SUERC
+    a crmhs:HS10_Sample_Preparation ;
+    a crm:E11_Modification ;
+    rdfs:label "Chemical pretreatment, combustion and graphitisation of bone samples at SUERC"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_SamplePrep_SUERC ;
+    crmhs:HSP5_prepared hsdata:BoneSample_SUERC42896 ;
+    crmhs:HSP5_prepared hsdata:BoneSample_SUERC42897 ;
+    crmhs:HSP6_used_method hsdata:Method_ChemicalPretreatment_SUERC ;
+    crmhs:HSP7_used_protocol hsdata:Protocol_SUERC_Pretreatment ;
+    crm:P14_carried_out_by hsdata:Actor_SUERC ;
+    crm:P7_took_place_at hsdata:Place_SUERCLaboratory .
+
+hsdata:Title_SamplePrep_SUERC
+    a crm:E35_Title ;
+    rdfs:label "SUERC chemical pretreatment, combustion and graphitisation of bone samples"@en .
+
+hsdata:Method_ChemicalPretreatment_SUERC
+    a crmhs:HS4_Method ;
+    rdfs:label "Modified Longin (1971) method for collagen extraction"@en .
+
+hsdata:Protocol_SUERC_Pretreatment
+    a crmhs:HS5_Protocol ;
+    rdfs:label "SUERC protocol: pretreatment modified Longin (1971); combustion (Vandeputte et al. 1996); graphitisation (Slota et al. 1987); AMS measurement (Xu et al. 2004)"@en .
+
+
+# --- AMS Analysis at ORAU (HS3) ---
+
+hsdata:Analysis_AMS_ORAU
+    a crmhs:HS3_Analysis ;
+    a crmsci:S4_Observation ;
+    rdfs:label "AMS radiocarbon analysis of Richard III bone samples – ORAU"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_AMS_ORAU ;
+    crmhs:HSP4_analysed hsdata:BoneSample_OxA27182 ;
+    crmhs:HSP4_analysed hsdata:BoneSample_OxA27183 ;
+    crmhs:HSP8_used_device hsdata:Device_AMS_ORAU ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_Measurements_OxA27182 ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_Measurements_OxA27183 ;
+    crmhs:HSP3_has_sub_activity hsdata:SamplePreparation_ORAU ;
+    crm:P14_carried_out_by hsdata:Actor_ORAU ;
+    crm:P7_took_place_at hsdata:Place_ORAULaboratory .
+
+hsdata:Title_AMS_ORAU
+    a crm:E35_Title ;
+    rdfs:label "AMS radiocarbon dating – Oxford Radiocarbon Accelerator Unit (ORAU)"@en .
+
+
+# --- AMS Analysis at SUERC (HS3) ---
+
+hsdata:Analysis_AMS_SUERC
+    a crmhs:HS3_Analysis ;
+    a crmsci:S4_Observation ;
+    rdfs:label "AMS radiocarbon analysis of Richard III bone samples – SUERC"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_AMS_SUERC ;
+    crmhs:HSP4_analysed hsdata:BoneSample_SUERC42896 ;
+    crmhs:HSP4_analysed hsdata:BoneSample_SUERC42897 ;
+    crmhs:HSP8_used_device hsdata:Device_AMS_SUERC ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_Measurements_SUERC42896 ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_Measurements_SUERC42897 ;
+    crmhs:HSP3_has_sub_activity hsdata:SamplePreparation_SUERC ;
+    crm:P14_carried_out_by hsdata:Actor_SUERC ;
+    crm:P7_took_place_at hsdata:Place_SUERCLaboratory .
+
+hsdata:Title_AMS_SUERC
+    a crm:E35_Title ;
+    rdfs:label "AMS radiocarbon dating – Scottish Universities Environmental Research Centre (SUERC)"@en .
+
+
+# --- Scientific Devices (HS11) ---
+
+hsdata:Device_AMS_ORAU
+    a crmhs:HS11_Scientific_Device ;
+    rdfs:label "Accelerator Mass Spectrometry system – ORAU, University of Oxford"@en ;
+    crmhs:HSP22_has_maker hsdata:Actor_ORAU ;
+    crm:P2_has_type hsdata:Type_AMS .
+
+hsdata:Device_AMS_SUERC
+    a crmhs:HS11_Scientific_Device ;
+    rdfs:label "SUERC 5MV Accelerator Mass Spectrometry system – University of Glasgow"@en ;
+    crmhs:HSP22_has_maker hsdata:Actor_SUERC ;
+    crmhs:HSP23_has_model hsdata:Type_SUERC_5MV_AMS ;
+    crm:P2_has_type hsdata:Type_AMS .
+
+hsdata:Type_AMS
+    a crm:E55_Type ;
+    rdfs:label "Accelerator Mass Spectrometry (AMS)"@en .
+
+hsdata:Type_SUERC_5MV_AMS
+    a crm:E55_Type ;
+    rdfs:label "SUERC 5MV AMS facility (Xu et al. 2004)"@en .
+
+
+# --- Software (D14) ---
+
+hsdata:Software_OxCal
+    a crmdig:D14_Software ;
+    rdfs:label "OxCal 4.4 – Bayesian radiocarbon calibration software (Bronk Ramsey 2009a)"@en ;
+.
+
+hsdata:Software_FRUITS
+    a crmdig:D14_Software ;
+    rdfs:label "FRUITS v2.1.1 – Food Reconstruction Using Isotopic Transferred Signals (Fernandes et al. 2014)"@en .
+
+# --- Individual measurement datasets (HS13) ---
+# Each records: conventional radiocarbon age BP, δ13C (IRMS), δ15N (IRMS)
+
+hsdata:Dataset_Measurements_OxA27182
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "Radiocarbon and stable isotope measurements – OxA-27182"@en ;
+    crm:P3_has_note "Radiocarbon Age: 478±25 BP; δ13C (IRMS): −18.4±0.2‰; δ15N (IRMS): 15.0±0.3‰"@en .
+
+hsdata:Dataset_Measurements_OxA27183
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "Radiocarbon and stable isotope measurements – OxA-27183"@en ;
+    crm:P3_has_note "Radiocarbon Age: 480±25 BP; δ13C (IRMS): −18.4±0.2‰; δ15N (IRMS): 15.3±0.3‰"@en .
+
+hsdata:Dataset_Measurements_SUERC42896
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "Radiocarbon and stable isotope measurements – SUERC-42896"@en ;
+    crm:P3_has_note "Radiocarbon Age: 434±18 BP; δ13C (IRMS): −18.7±0.2‰; δ15N (IRMS): 14.6±0.3‰"@en .
+
+hsdata:Dataset_Measurements_SUERC42897
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "Radiocarbon and stable isotope measurements – SUERC-42897"@en ;
+    crm:P3_has_note "Radiocarbon Age: 440±17 BP; δ13C (IRMS): −18.6±0.2‰; δ15N (IRMS): 15.0±0.3‰"@en .
+
+
+# --- Weighted mean dataset (HS13) ---
+
+hsdata:Dataset_WeightedMean
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "Weighted mean of four radiocarbon determinations – Grey Friars 2012"@en ;
+    crmhs:HSP11_was_created_using_software hsdata:Software_OxCal ;
+    crm:P3_has_note "Weighted mean: 451±11 BP (T'=3.8; n=3; T'(5%)=7.8; Ward and Wilson 1978)"@en .
+
+
+# --- Statistical consolidation activity (HS1) ---
+
+hsdata:Activity_WeightedMean
+    a crmhs:HS1_Scientific_Activity ;
+    rdfs:label "Statistical consolidation: weighted mean of four radiocarbon determinations"@en ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_OxA27182 ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_OxA27183 ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_SUERC42896 ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_SUERC42897 ;
+    crmhs:HSP10_used_software hsdata:Software_OxCal ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_WeightedMean .
+
+
+# --- Dietary isotope modelling: FRUITS (HS1) ---
+
+hsdata:Activity_FRUITSModelling
+    a crmhs:HS1_Scientific_Activity ;
+    rdfs:label "Dietary stable isotope modelling using FRUITS v2.1.1"@en ;
+    crmhs:HSP10_used_software hsdata:Software_FRUITS ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_OxA27182 ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_OxA27183 ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_SUERC42896 ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_Measurements_SUERC42897 ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_FRUITSDietaryModel .
+
+hsdata:Dataset_FRUITSDietaryModel
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "FRUITS proportional diet model – Grey Friars 2012 individual"@en ;
+    crmhs:HSP11_was_created_using_software hsdata:Software_FRUITS ;
+    crm:P3_has_note "Eel and freshwater fish: 56.7±6.9%; terrestrial protein: 18.3±14.0%; terrestrial vegetation: 22.4±10.3%; marine fish: 2.7±2.3%"@en .
+
+
+# --- Calibration Activity – terrestrial curve (HS1) ---
+
+hsdata:Activity_Calibration_Terrestrial
+    a crmhs:HS1_Scientific_Activity ;
+    rdfs:label "Calibration of weighted mean against IntCal20 terrestrial curve"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_Calibration_Terrestrial ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_WeightedMean ;
+    crmhs:HSP6_used_method hsdata:Method_ProbabilityCalibration ;
+    crmhs:HSP10_used_software hsdata:Software_OxCal ;
+    crmhs:HSP13_used_settings hsdata:Settings_IntCal20 ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_CalibratedDates_Terrestrial ;
+    crm:P14_carried_out_by hsdata:Actor_ORAU .
+
+hsdata:Title_Calibration_Terrestrial
+    a crm:E35_Title ;
+    rdfs:label "Radiocarbon calibration using IntCal20 terrestrial curve (Reimer et al. 2020)"@en .
+
+hsdata:Method_ProbabilityCalibration
+    a crmhs:HS4_Method ;
+    rdfs:label "Probability method for radiocarbon calibration (Stuiver and Reimer 1993)"@en .
+
+hsdata:Settings_IntCal20
+    a crmhs:HS14_Analysis_Settings ;
+    rdfs:label "IntCal20 Northern Hemisphere radiocarbon calibration curve (Reimer et al. 2020)"@en .
+
+hsdata:Dataset_CalibratedDates_Terrestrial
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "Calibrated date range – fully terrestrial calibration"@en ;
+    crmhs:HSP11_was_created_using_software hsdata:Software_OxCal ;
+    crm:P3_has_note "cal AD 1432–1454 (95% probability); fully terrestrial calibration"@en .
+
+
+# --- Calibration Activity – mixed-source curve (HS1) ---
+
+hsdata:Activity_Calibration_MixedSource
+    a crmhs:HS1_Scientific_Activity ;
+    rdfs:label "Mixed-source calibration accounting for freshwater and marine dietary offsets"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_Calibration_Mixed ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_WeightedMean ;
+    crmhs:HSP12_used_dataset hsdata:Dataset_FRUITSDietaryModel ;
+    crmhs:HSP6_used_method hsdata:Method_MixedSourceCalibration ;
+    crmhs:HSP10_used_software hsdata:Software_OxCal ;
+    crmhs:HSP13_used_settings hsdata:Settings_MixedCurve ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_CalibratedDates_MixedSource ;
+    crm:P14_carried_out_by hsdata:Actor_ORAU .
+
+hsdata:Title_Calibration_Mixed
+    a crm:E35_Title ;
+    rdfs:label "Mixed-source calibration: IntCal20 + Marine20 + freshwater reservoir offset"@en .
+
+hsdata:Method_MixedSourceCalibration
+    a crmhs:HS4_Method ;
+    rdfs:label "Mixed-source calibration using proportional dietary carbon sources"@en .
+
+hsdata:Settings_MixedCurve
+    a crmhs:HS14_Analysis_Settings ;
+    rdfs:label "Mixed calibration settings: IntCal20 + Marine20 (ΔR=−169±56 BP, Harkness 1983) + freshwater ΔR uniform 750–0 BP; prior: interment before AD 1538"@en .
+
+hsdata:Dataset_CalibratedDates_MixedSource
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "Calibrated date range – mixed-source calibration"@en ;
+    crmhs:HSP11_was_created_using_software hsdata:Software_OxCal ;
+    crm:P3_has_note "cal AD 1459–1539 (95% probability); constrained before AD 1538 (Dissolution). Further constrained before AD 1486: Amodel 65"@en .
+
+
+# --- Calibrated date dimensions (E54) ---
+
+hsdata:Dimension_CalibratedDate_Terrestrial
+    a crm:E54_Dimension ;
+    rdfs:label "Calibrated date – terrestrial curve: cal AD 1432–1454 (95%)"@en ;
+    crm:P90_has_value "cal AD 1432–1454"^^xsd:string ;
+    crm:P91_has_unit hsdata:Unit_CalAD .
+
+hsdata:Dimension_CalibratedDate_MixedSource
+    a crm:E54_Dimension ;
+    rdfs:label "Calibrated date – mixed-source: cal AD 1459–1539 (95%)"@en ;
+    crm:P90_has_value "cal AD 1459–1539"^^xsd:string ;
+    crm:P91_has_unit hsdata:Unit_CalAD .
+
+hsdata:Unit_CalAD
+    a crm:E58_Measurement_Unit ;
+    rdfs:label "Calibrated years AD (cal AD)"@en .
+
+
+# --- Interpretative Synthesis: Attribute Assignments (E13) ---
+
+hsdata:DateAssignment_Terrestrial
+    a crm:E13_Attribute_Assignment ;
+    rdfs:label "Attribution of terrestrial calibrated date to Richard III skeletal remains"@en ;
+    crm:P140_assigned_attribute_to hsdata:RichardIII_Skeleton ;
+    crm:P141_assigned hsdata:Dimension_CalibratedDate_Terrestrial ;
+    crm:P14_carried_out_by hsdata:Actor_ORAU .
+
+hsdata:DateAssignment_MixedSource
+    a crm:E13_Attribute_Assignment ;
+    rdfs:label "Attribution of mixed-source calibrated date to Richard III skeletal remains"@en ;
+    crm:P140_assigned_attribute_to hsdata:RichardIII_Skeleton ;
+    crm:P141_assigned hsdata:Dimension_CalibratedDate_MixedSource ;
+    crm:P14_carried_out_by hsdata:Actor_ORAU .
+
+
+# --- Actors ---
+
+hsdata:Actor_UniversityOfLeicester
+    a crm:E74_Group ;
+    rdfs:label "University of Leicester Archaeological Services"@en .
+
+hsdata:Actor_ORAU
+    a crm:E74_Group ;
+    rdfs:label "Oxford Radiocarbon Accelerator Unit (ORAU), Research Laboratory for Archaeology, University of Oxford"@en .
+
+hsdata:Actor_SUERC
+    a crm:E74_Group ;
+    rdfs:label "Scottish Universities Environmental Research Centre (SUERC), University of Glasgow"@en .
+
+
+# --- Places ---
+
+hsdata:Place_ORAULaboratory
+    a crm:E53_Place ;
+    rdfs:label "Oxford Radiocarbon Accelerator Unit (ORAU) laboratory, University of Oxford"@en .
+
+hsdata:Place_SUERCLaboratory
+    a crm:E53_Place ;
+    rdfs:label "Scottish Universities Environmental Research Centre (SUERC) laboratory, University of Glasgow"@en .
+
+
+# --- Overall workflow decomposition (HSP3) ---
+
+hsdata:Activity_RadiocarbonWorkflow
+    a crmhs:HS1_Scientific_Activity ;
+    rdfs:label "Overall radiocarbon dating workflow for Richard III skeletal remains"@en ;
+    crmhs:HSP3_has_sub_activity hsdata:BoneSamplingActivity ;
+    crmhs:HSP3_has_sub_activity hsdata:Analysis_AMS_ORAU ;
+    crmhs:HSP3_has_sub_activity hsdata:Analysis_AMS_SUERC ;
+    crmhs:HSP3_has_sub_activity hsdata:Activity_WeightedMean ;
+    crmhs:HSP3_has_sub_activity hsdata:Activity_FRUITSModelling ;
+    crmhs:HSP3_has_sub_activity hsdata:Activity_Calibration_Terrestrial ;
+    crmhs:HSP3_has_sub_activity hsdata:Activity_Calibration_MixedSource .

@@ -1,0 +1,314 @@
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:      <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm:      <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmhs:    <http://vast-lab.org/crmhs/> .
+@prefix crmsci:   <http://www.cidoc-crm.org/extensions/crmsci/> .
+@prefix crmdig:   <http://www.cidoc-crm.org/extensions/crmdig/> .
+@prefix crmarchaeo: <http://www.cidoc-crm.org/extensions/crmarchaeo/> .
+@prefix hsdata:   <http://vast-lab.org/hsdata/> .
+
+# ============================================================
+# CRMhs Turtle encoding of the MA-XRF analysis of
+# Raffaello Sanzio's Portrait of Leo X with two cardinals
+# (CRMhs Specification v1.2, Section 5.2)
+# Data from: Mazzinghi et al. (2022), "Mapping with Macro
+# X-ray Fluorescence Scanning of Raffaello's Portrait of Leo X",
+# Heritage 2022, 5, 3993–4005.
+# https://doi.org/10.3390/heritage5040205
+# ============================================================
+
+
+# --- Study Object: the painting (HS6 / E22) ---
+
+hsdata:LeoX_Painting
+    a crm:E22_Human-Made_Object ;
+    a crmhs:HS6_Study_Object ;
+    rdfs:label "Portrait of Leo X with two cardinals, Raffaello Sanzio, oil on panel, 155×119 cm"@en ;
+    crm:P2_has_type hsdata:Type_OilPainting ;
+    crm:P1_is_identified_by hsdata:Title_LeoX ;
+    crm:P55_has_current_location hsdata:Place_UffiziGalleries ;
+    crm:P14i_was_created_by hsdata:Creation_LeoX ;
+    crmhs:HSP17_has_area_of_interest hsdata:Area_RedFabrics ;
+    crmhs:HSP17_has_area_of_interest hsdata:Area_GreyCassock ;
+    crmhs:HSP17_has_area_of_interest hsdata:Area_FleshTones ;
+    crmhs:HSP17_has_area_of_interest hsdata:Area_YellowObjects ;
+    crmhs:HSP17_has_area_of_interest hsdata:Area_ArchitecturalBackground .
+
+hsdata:Title_LeoX
+    a crm:E35_Title ;
+    rdfs:label "Portrait of Leo X with two cardinals"@en .
+
+hsdata:Type_OilPainting
+    a crm:E55_Type ;
+    rdfs:label "Oil painting on panel"@en .
+
+hsdata:Creation_LeoX
+    a crm:E65_Creation ;
+    rdfs:label "Execution of the Portrait of Leo X, Rome, c. 1518"@en ;
+    crm:P14_carried_out_by hsdata:Actor_RaffaelloSanzio ;
+    crm:P4_has_time_span hsdata:Timespan_1518 .
+
+hsdata:Actor_RaffaelloSanzio
+    a crm:E21_Person ;
+    rdfs:label "Raffaello Sanzio (Raphael), 1483–1520"@en .
+
+hsdata:Timespan_1518
+    a crm:E52_Time-Span ;
+    rdfs:label "c. 1518"@en ;
+    crm:P82a_begin_of_the_begin "1518-01-01"^^xsd:date ;
+    crm:P82b_end_of_the_end "1518-12-31"^^xsd:date .
+
+hsdata:Place_UffiziGalleries
+    a crm:E53_Place ;
+    rdfs:label "Gallerie degli Uffizi, Florence, Italy"@en .
+
+
+# --- Conservation treatment prior to analysis ---
+
+hsdata:ConservationTreatment_OPD
+    a crm:E11_Modification ;
+    rdfs:label "Conservation treatment of the Portrait of Leo X at the Opificio delle Pietre Dure, Florence (2019–2020)"@en ;
+    crm:P31_has_modified hsdata:LeoX_Painting ;
+    crm:P14_carried_out_by hsdata:Actor_OPD ;
+    crm:P7_took_place_at hsdata:Place_OPD ;
+    crm:P4_has_time_span hsdata:Timespan_Conservation .
+
+hsdata:Timespan_Conservation
+    a crm:E52_Time-Span ;
+    rdfs:label "2019–2020"@en ;
+    crm:P82a_begin_of_the_begin "2019-01-01"^^xsd:date ;
+    crm:P82b_end_of_the_end "2020-12-31"^^xsd:date .
+
+hsdata:Actor_OPD
+    a crm:E74_Group ;
+    rdfs:label "Opificio delle Pietre Dure (OPD), Florence"@en .
+
+hsdata:Place_OPD
+    a crm:E53_Place ;
+    rdfs:label "Opificio delle Pietre Dure, Florence, Italy"@en .
+
+
+# --- Study Object Areas (HS8) ---
+# Areas of the painting surface targeted by the MA-XRF analysis
+
+hsdata:Area_RedFabrics
+    a crmhs:HS8_Study_Object_Area ;
+    a crm:E53_Place ;
+    rdfs:label "Red fabric areas: mozzetta, camauro, cassocks, tablecloth, chair trimmings"@en .
+
+hsdata:Area_GreyCassock
+    a crmhs:HS8_Study_Object_Area ;
+    a crm:E53_Place ;
+    rdfs:label "Pope's white/grey brocade damask cassock area"@en .
+
+hsdata:Area_FleshTones
+    a crmhs:HS8_Study_Object_Area ;
+    a crm:E53_Place ;
+    rdfs:label "Flesh tones, hair, eyes of the three figures"@en .
+
+hsdata:Area_YellowObjects
+    a crmhs:HS8_Study_Object_Area ;
+    a crm:E53_Place ;
+    rdfs:label "Yellow metallic objects: magnifying glass, reading desk, handbell"@en .
+
+hsdata:Area_ArchitecturalBackground
+    a crmhs:HS8_Study_Object_Area ;
+    a crm:E53_Place ;
+    rdfs:label "Grey architectural background (pietra serena)"@en .
+
+
+# --- Scientific Activity: MA-XRF scanning campaign (HS1) ---
+
+hsdata:Activity_MAXRF_Campaign
+    a crmhs:HS1_Scientific_Activity ;
+    rdfs:label "MA-XRF scanning campaign on Raffaello's Portrait of Leo X"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_Campaign ;
+    crmhs:HSP2_was_performed_on hsdata:LeoX_Painting ;
+    crm:P4_has_time_span hsdata:Timespan_Campaign ;
+    crm:P14_carried_out_by hsdata:Actor_INFNCHNet ;
+    crm:P7_took_place_at hsdata:Place_OPD .
+
+hsdata:Title_Campaign
+    a crm:E35_Title ;
+    rdfs:label "MA-XRF scanning of the Portrait of Leo X – INFN-CHNet diagnostic campaign"@en .
+
+hsdata:Timespan_Campaign
+    a crm:E52_Time-Span ;
+    rdfs:label "2019–2020 (pre-exhibition diagnostic campaign)"@en .
+
+hsdata:Actor_INFNCHNet
+    a crm:E74_Group ;
+    rdfs:label "INFN-CHNet (Cultural Heritage Network of the Italian National Institute of Nuclear Physics), Florence Division"@en .
+
+hsdata:Actor_Mazzinghi
+    a crm:E21_Person ;
+    rdfs:label "Anna Mazzinghi, INFN-CHNet / University of Florence"@en .
+
+hsdata:Actor_Ruberto
+    a crm:E21_Person ;
+    rdfs:label "Chiara Ruberto, INFN-CHNet / University of Florence"@en .
+
+hsdata:Actor_Giuntini
+    a crm:E21_Person ;
+    rdfs:label "Lorenzo Giuntini, INFN-CHNet / University of Florence"@en .
+
+hsdata:Actor_Mando
+    a crm:E21_Person ;
+    rdfs:label "Pier Andrea Mandò, INFN-CHNet / University of Florence"@en .
+
+hsdata:Actor_Taccetti
+    a crm:E21_Person ;
+    rdfs:label "Francesco Taccetti, INFN-CHNet Florence Division"@en .
+
+hsdata:Actor_Castelli
+    a crm:E21_Person ;
+    rdfs:label "Lisa Castelli, INFN-CHNet Florence Division"@en .
+
+
+# --- MA-XRF Analysis (HS3) ---
+
+hsdata:Analysis_MAXRF
+    a crmhs:HS3_Analysis ;
+    a crmsci:S4_Observation ;
+    rdfs:label "MA-XRF elemental mapping analysis of the Portrait of Leo X"@en ;
+    crmhs:HSP1_has_activity_title hsdata:Title_Analysis ;
+    crmhs:HSP4_analysed hsdata:LeoX_Painting ;
+    crmhs:HSP8_used_device hsdata:Device_MAXRF_Scanner ;
+    crmhs:HSP10_used_software hsdata:Software_INFNCHNet ;
+    crmhs:HSP6_used_method hsdata:Method_MAXRF ;
+    crmhs:HSP7_used_protocol hsdata:Protocol_MAXRF_Conditions ;
+    crmhs:HSP16_produced_dataset hsdata:Dataset_ElementalMaps ;
+    crm:P14_carried_out_by hsdata:Actor_INFNCHNet ;
+    crm:P7_took_place_at hsdata:Place_OPD .
+
+hsdata:Title_Analysis
+    a crm:E35_Title ;
+    rdfs:label "Macro X-ray fluorescence (MA-XRF) elemental mapping of the Portrait of Leo X"@en .
+
+hsdata:Method_MAXRF
+    a crmhs:HS4_Method ;
+    rdfs:label "Macro X-ray fluorescence scanning (MA-XRF): non-invasive elemental distribution mapping"@en .
+
+hsdata:Protocol_MAXRF_Conditions
+    a crmhs:HS5_Protocol ;
+    rdfs:label "Operating conditions: 30 kV anode voltage, 90 µA filament current, Mo anode, 800 µm collimator; scanning velocity 10 mm/s; pixel size 1 mm; multiple scans for near-full painting coverage"@en .
+
+
+# --- Scientific Device: INFN-CHNet MA-XRF Scanner (HS11) ---
+
+hsdata:Device_MAXRF_Scanner
+    a crmhs:HS11_Scientific_Device ;
+    rdfs:label "INFN-CHNet MA-XRF scanner (Taccetti et al. 2019)"@en ;
+    crm:P2_has_type hsdata:Type_MAXRF_Scanner ;
+    crmhs:HSP22_has_maker hsdata:Actor_INFNCHNet ;
+    crm:P3_has_note "Components: Moxtek X-ray tube (40 kV max, 0.1 mA max); Amptek XR-100 SDD (25 mm² active surface, 500 µm thickness); Keyence IA-100 telemeter; Physik Instrumente linear motors (200 mm x/y, 50 mm z); CAEN DT5780 signal digitizer"@en .
+
+hsdata:Type_MAXRF_Scanner
+    a crm:E55_Type ;
+    rdfs:label "Macro X-ray fluorescence (MA-XRF) scanner"@en .
+
+
+# --- Software (D14) ---
+
+hsdata:Software_INFNCHNet
+    a crmdig:D14_Software ;
+    rdfs:label "In-house MA-XRF instrument control and data analysis software – INFN-CHNet"@en .
+
+
+# --- Dataset: elemental distribution maps (HS13) ---
+
+hsdata:Dataset_ElementalMaps
+    a crmhs:HS13_Scientific_Dataset ;
+    rdfs:label "MA-XRF elemental distribution maps for the Portrait of Leo X"@en ;
+    crmhs:HSP11_was_created_using_software hsdata:Software_INFNCHNet ;
+    crm:P3_has_note "Elements mapped: Pb (Lα), Hg (Lα), Cu (Kα), Fe (Kα), Mn (Kα), K (K lines), Ca (Kα), Bi (Lα), Zn (Kα), Sn (Lα)"@en .
+
+
+# --- Interpretation activities: pigment attribution per area (HS1 / E13) ---
+
+# Red fabrics
+hsdata:Interpretation_RedFabrics
+    a crm:E13_Attribute_Assignment ;
+    rdfs:label "Pigment attribution for red fabric areas"@en ;
+    crm:P140_assigned_attribute_to hsdata:Area_RedFabrics ;
+    crm:P141_assigned hsdata:PigmentHypothesis_RedFabrics ;
+    crm:P14_carried_out_by hsdata:Actor_INFNCHNet ;
+    crm:P16_used_specific_object hsdata:Dataset_ElementalMaps .
+
+hsdata:PigmentHypothesis_RedFabrics
+    a crm:E55_Type ;
+    rdfs:label "Hypothesised pigments – red fabrics: vermilion/cinnabar (Hg); copper-based compounds and Fe oxides/hydroxides for modelling; Mn traces indicating glass powder in red lakes; K from red lakes"@en .
+
+# Grey/white cassock
+hsdata:Interpretation_GreyCassock
+    a crm:E13_Attribute_Assignment ;
+    rdfs:label "Pigment attribution for pope's grey brocade cassock"@en ;
+    crm:P140_assigned_attribute_to hsdata:Area_GreyCassock ;
+    crm:P141_assigned hsdata:PigmentHypothesis_GreyCassock ;
+    crm:P14_carried_out_by hsdata:Actor_INFNCHNet ;
+    crm:P16_used_specific_object hsdata:Dataset_ElementalMaps .
+
+hsdata:PigmentHypothesis_GreyCassock
+    a crm:E55_Type ;
+    rdfs:label "Hypothesised pigments – grey cassock: lead white (Pb) as base; 'bismuth black' (Bi) for grey/cold tone; copper-based compounds; Fe oxides/hydroxides for shading; bone black or other Ca-based material"@en .
+
+# Flesh tones
+hsdata:Interpretation_FleshTones
+    a crm:E13_Attribute_Assignment ;
+    rdfs:label "Pigment attribution for flesh tones, hair and eyes"@en ;
+    crm:P140_assigned_attribute_to hsdata:Area_FleshTones ;
+    crm:P141_assigned hsdata:PigmentHypothesis_FleshTones ;
+    crm:P14_carried_out_by hsdata:Actor_INFNCHNet ;
+    crm:P16_used_specific_object hsdata:Dataset_ElementalMaps .
+
+hsdata:PigmentHypothesis_FleshTones
+    a crm:E55_Type ;
+    rdfs:label "Hypothesised pigments – flesh tones: lead white, vermilion, Fe and Cu-based compounds; hair painted with Fe-based compounds; eyes with Cu-based pigment; Zn detected in eyes of the two cardinals (possible iron-gall ink underdrawing)"@en .
+
+# Yellow metallic objects
+hsdata:Interpretation_YellowObjects
+    a crm:E13_Attribute_Assignment ;
+    rdfs:label "Pigment attribution for yellow metallic objects (handbell, reading desk, magnifying glass)"@en ;
+    crm:P140_assigned_attribute_to hsdata:Area_YellowObjects ;
+    crm:P141_assigned hsdata:PigmentHypothesis_YellowObjects ;
+    crm:P14_carried_out_by hsdata:Actor_INFNCHNet ;
+    crm:P16_used_specific_object hsdata:Dataset_ElementalMaps .
+
+hsdata:PigmentHypothesis_YellowObjects
+    a crm:E55_Type ;
+    rdfs:label "Hypothesised pigments – yellow metallic objects: Fe oxides/hydroxides, lead-tin yellow (Fe, Sn), vermilion traces, Cu-based compounds; 'bismuth black' for metallic appearance"@en .
+
+# Architectural background
+hsdata:Interpretation_Background
+    a crm:E13_Attribute_Assignment ;
+    rdfs:label "Pigment attribution for grey architectural background"@en ;
+    crm:P140_assigned_attribute_to hsdata:Area_ArchitecturalBackground ;
+    crm:P141_assigned hsdata:PigmentHypothesis_Background ;
+    crm:P14_carried_out_by hsdata:Actor_INFNCHNet ;
+    crm:P16_used_specific_object hsdata:Dataset_ElementalMaps .
+
+hsdata:PigmentHypothesis_Background
+    a crm:E55_Type ;
+    rdfs:label "Hypothesised pigments – background: copper resinate base layer (Cu, confirmed by cross sections); 'bismuth black', Fe oxides/hydroxides and Ca-based material (possibly bone black) in superficial layers to render pietra serena appearance"@en .
+
+
+# --- Overall MA-XRF workflow decomposition (HSP3) ---
+
+hsdata:Activity_MAXRF_Campaign
+    crmhs:HSP3_has_sub_activity hsdata:Analysis_MAXRF .
+
+hsdata:Analysis_MAXRF
+    crmhs:HSP3_has_sub_activity hsdata:Interpretation_RedFabrics ;
+    crmhs:HSP3_has_sub_activity hsdata:Interpretation_GreyCassock ;
+    crmhs:HSP3_has_sub_activity hsdata:Interpretation_FleshTones ;
+    crmhs:HSP3_has_sub_activity hsdata:Interpretation_YellowObjects ;
+    crmhs:HSP3_has_sub_activity hsdata:Interpretation_Background .
+
+
+# --- Places ---
+
+hsdata:Place_INFNCHNet_Florence
+    a crm:E53_Place ;
+    rdfs:label "INFN-CHNet Florence Division / Department of Physics and Astronomy, University of Florence, Sesto Fiorentino"@en .
