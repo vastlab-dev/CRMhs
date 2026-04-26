@@ -13,4 +13,7 @@ This is the official repository of CRMhs, a semantic ontology designed to captur
 - **FAIR Principles**: Ensuring that digital scientific data is Findable, Accessible, Interoperable, and Reusable.
 - **Traceability**: Documenting the entire research workflow, including preparation, analysis, interpretation, and digital documentation.
 
+Official namespace of the ontology: [http://vast-lab.org/crmhs/](http://vast-lab.org/crmhs/)
+Preferred Namespace Prefix: **crmhs**
+
 Check the [documentation](https://github.com/vastlab-dev/CRMhs/blob/main/CRMhs_Ontology_Specification_v1.2.pdf) for more details.
